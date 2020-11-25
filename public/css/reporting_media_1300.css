@@ -1,0 +1,1 @@
+@media screen and (max-width: 1000px){	*{		font-size: 9px;	}		#logo{		width: 280px;		height: 54px;	}	#interval input[type="submit"],	#interval select{		padding: 5px 10px;	}}
