@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="database" type="dataBaseType" />
+
+	<xs:complexType name="dataBaseType">
+		<xs:sequence>
+			<xs:element name="table" type="tableType" maxOccurs="unbounded" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+
+	<xs:complexType name="tableType">
+		<xs:sequence>
+			<xs:element name="columns" type="columnsType" minOccurs="1" maxOccurs="1" />
+			<xs:element name="records" type="recordsType" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+		<xs:attribute name="name" type="xs:string" use="required" />
+	</xs:complexType>
+	
+	<xs:complexType name="columnsType">
+		<xs:sequence>
+			<xs:element name="column" type="columnType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="columnType">
+		<xs:sequence>
+			<xs:element name="field" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="type" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="null" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="key" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="default" type="xs:string" minOccurs="1" maxOccurs="1" />
+			<xs:element name="extra" type="xs:string" minOccurs="1" maxOccurs="1" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="recordsType">
+		<xs:sequence>
+			<xs:element name="record" type="recordType" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="recordType">
+		<xs:sequence>
+			<xs:element name="rec" type="recType" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+
+	<xs:complexType name="recType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attribute name="name" type="xs:string" use="required" />
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	
+</xs:schema>
